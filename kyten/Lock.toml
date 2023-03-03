@@ -1,5 +1,5 @@
 [package]
 author = "JoshuaKincaidKi (Healing)"
-name = "Kyte"
+name = "Kyten"
 version = "1.0.0"
 entrypoint = "index.ky"
