@@ -1,0 +1,9 @@
+entrypoint = "index.ky"
+run = "kyten" 
+hidden = ["**?_ice.lua","kyten"]
+
+[env]
+PATH = "/home/runner/$REPL_SLUG/.config/npm/node_global/bin:/home/runner/$REPL_SLUG/kyten/.bin"
+
+[nix]
+channel = "stable-22_11"

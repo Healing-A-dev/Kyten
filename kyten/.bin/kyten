@@ -1,0 +1,10 @@
+#!/usr/bin/env lua
+
+require "kyten/modules/parser"
+parse("index")
+parseConnect(split_string)
+f=io.open("kyten/.bin/.main","w")
+f:write(tostring(rtble[1]))
+f:close()
+dofile("kyten/.bin/.main")
+io.open("kyten/.bin/.main","w+")
