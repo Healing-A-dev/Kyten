@@ -1,0 +1,154 @@
+@format "lib.module";
+
+toString = tostring;
+###string.upper = nil;
+string.lower = nil;###
+
+func table.search(table, value):{
+  ?static num = 0;
+  for (_,i in pairs(table)):{
+    num = num + 1;
+    if (value == i):{
+      return true;
+    }elseif (value != i and num == #table):{
+      return false;
+    end};
+  end};
+end};
+
+func table.split(table, additional_value);
+  additional_value = additional_value || nil;
+  if (type(table) != "table"):{
+    putln "Kyten: <argument> error\ntraceback\n\t[ky]: Bad argument #1 in 'table.split' table expected got "/{type(table)}/"\n\t[file]: "/{fileName}/"\n\t[line]: Gotta fix";
+  end};
+  ?static n = 0;
+  ?static tn;
+  if (additional_value == nil):{
+    for (_,i in pairs(table)):{
+      if (type(i) == "table"):{
+        putln tostring("\nTable: "/{_});
+        ?static tnum = 0;
+        for (k,v in pairs(i)):{
+          tnum = tnum+1;
+          putln i[tnum];
+        end};
+      }else{
+        putln i;
+      end};
+    end};
+  }else{
+    if (type(additional_value) != "string"):{
+      putln "Kyten: <argument> error\ntraceback\n\t[ky]: Bad argument #2 in 'table.split' string expected got "/{type(table)}/"\n\t[file]: "/{fileName}/"\n\t[line]: Gotta fix";
+    end};
+    for (_,i in pairs(table)):{
+      if (type(i) == "table"):{
+        ?static tn = 0;
+        putln tostring("\nTable: "/{_});
+        for (k,v in pairs(i)):{
+          tn = tn+1;
+          putln additional_value/" "/{tn}/". "/{tostring(v)};
+        end};
+      }else{
+        n = n + 1;
+        putln additional_value/" "/{n}/". "/{i};
+      end};
+    end};
+  end};
+end};
+
+func wait(seconds):{
+  ?static s = os.time();
+  if (seconds == nil):{
+    repeat until os.time() > s;
+  }else{
+    repeat until os.time() > s + seconds;
+  end};
+end};
+
+func table.merge(table1, table2, tablename):{
+  ?static tmp = {};
+  ?static t1 = 0;
+  tablename = tablename || {};
+  for (_,i in pairs(table1)):{
+    tmp[#tmp+1] = i;
+  end};
+  for (_,k in pairs(table2)):{
+    tmp[#tmp+1] = k;
+  end};
+  tablename = tmp;
+  return tablename;
+end};
+
+?static func stringSplit(string):{
+  ?static store = {string};
+  out = {};
+  for (_,i in pairs(store)):{
+    for (s = 1, #i):{
+      ?static str = i:sub(s,s);
+      out[#out+1] = str;
+    end};
+  end};
+  return out;
+end};
+
+func table.position(table,item):{
+  ?static store = {};
+  ?static string = "";
+  for (_,i in pairs(table)):{
+    if (i == item):{
+      store[#store+1] = (#table-(#table-_));
+    end};
+  end};
+  for (_,i in pairs(store)):{
+    string = string..tostring(i).."\t";
+  end};
+  if (#string == 0):{
+    return nil;
+  }else{
+    return string;
+  end};
+end};
+
+func string.beginsWith(string,f):{
+  ?static split = stringSplit(string);
+  if (split[1] == f):{
+    return true;
+  }else{
+    return false;
+  end};
+end};
+
+func string.endsWith(string,f):{
+  ?static split = stringSplit(string);
+  if (split[#split] == f):{
+    return true;
+  }else{
+    return false;
+  end};
+end};
+
+func keypairs(t,f):{
+  ?static a = {};
+  for (n in pairs(t)):{
+    table.insert(a,n);
+  end};
+  table.sort(a,f);
+  ?static i = 0;
+  ?static iter = func():{
+    i = i + 1;
+    if (a[i] == nil):{
+      return nil;
+    }else{
+      return a[i], t[a[i]];
+    end};
+  end};
+  return iter;
+end};
+
+func keysearch(table, value):{
+  ?static found = false;
+  if (table[value] != nil):{
+    found = true;
+  end};
+  return found;
+end};

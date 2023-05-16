@@ -1,0 +1,46 @@
+@format "lib.module";
+
+-# Colors;
+Color = {
+  ["Red"] = "\027[91m",
+  ["Purple"] = "\027[95m",
+  ["Green"] = "\027[92m",
+  ["Yellow"] = "\027[93m",
+  ["Blue"] = "\027[94m",
+  ["Cyan"] = "\027[96m",
+  ["Grey"] = "\027[90m",
+  ["Red.Strong"] = "\027[31m",
+  ["Green.Strong"] = "\027[32m",
+  ["Yellow.Strong"] = "\027[33m",
+  ["Blue.Strong"] = "\027[34m",
+  ["Cyan.Strong"] = "\027[36m",
+  ["Grey.Strong"] = "\027[30m",
+  ["Purple.Strong"] = "\027[35m"
+};
+
+-# Text Formats;
+Style = {
+  ["Bold"] = '\027[1m',
+  ["Dim"] = '\027[2m',
+  ["Slant"] = '\027[3m',
+  ["Underline"] = '\027[4m',
+  ["Inverse"] = '\027[7m',
+  ["Invisible"] = '\027[8m',
+  ["Crossover"] = '\027[9m'
+}
+
+-# Reset;
+Reset = "\027[0m";
+
+-# Typewriter Effect (CREDIT: ChatGPT);
+func typewrite(string, delay):{
+  if (type(string) != "string"):{
+    putln "Kyten: <argument> error\ntraceback:\n\t[ky]: Bad argument #1 in 'typewrite' string expected got "/{type(text)}/"\n\t[file]: "/{fileName}/".ky\n\t[line]: Gotta fix";
+    os.exit();
+  end};
+  for (i = 1, #string):{
+    io.write(string.sub(string, i, i));
+    io.flush();
+    os.execute("sleep "..tostring(delay));
+  end};
+end};
