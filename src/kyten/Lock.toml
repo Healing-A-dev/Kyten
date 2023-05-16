@@ -1,5 +1,5 @@
 [package]
-Owner = #userName Here
+Owner = "Healing"
 name = "Kyten"
 version = "0.1.0"
 entrypoint = "index.ky"
