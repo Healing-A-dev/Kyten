@@ -1,0 +1,17 @@
+@format "core.file";
+
+import "parse";
+import "src/kyten/modules/utilityFunctions";
+?static hold = {};
+?static Goop = io.open("src/kyten/bin/main");
+?static lines = Goop:lines();
+for (line in lines):{
+  hold[#hold+1] = line;
+end};
+parse(hold[1]);
+parseConnect(split_string);
+?static f=io.open("src/kyten/bin/main","w");
+f:write(tostring(rtble[1]));
+f:close();
+dofile("src/kyten/bin/main");
+io.open("src/kyten/bin/main","w+");
