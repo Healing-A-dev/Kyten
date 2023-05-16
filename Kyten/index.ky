@@ -1,3 +1,0 @@
-@format "sh.io";
-
-putln "Hello, world!";
